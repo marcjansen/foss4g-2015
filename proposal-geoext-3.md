@@ -7,7 +7,7 @@ interface savvy, rich data-package and architectural concepts of the
 ExtJS library provided by Sencha.
 
 Version 2.1 of GeoExt (currently in alpha-status) is the successor to the 
-GeoExt 1.x-series, brought support for ExtJS 5 and is built atop the following
+GeoExt 1.x-series and brought support for ExtJS 5 and is built atop the following
 installments of its base libraries: OpenLayers 2.13.1 and ExtJS 5.1.0 
 (or ExtJS 4.2.1 at your choice).
 
