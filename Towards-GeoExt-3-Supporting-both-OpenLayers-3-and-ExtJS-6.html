@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Towards GeoExt 3 &mdash; Supporting both OpenLayers 3 and ExtJS 6 by M. Jansen &amp; C. Mayer (FOSS4G 2015 Seoul, South Korea)</title>
+
+	<meta name="description" content="Slides of the talk 'Towards GeoExt 3 &mdash; Supporting both OpenLayers 3 and ExtJS 6' from FOSS4G 2015 Seoul, South Korea">
+	<meta name="author" content="Marc Jansen">
+	<meta name="author" content="Christian Mayer">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="./reveal.js-3.1.0/css/reveal.css">
+	<link rel="stylesheet" href="./reveal.js-3.1.0/css/theme/black.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="./reveal.js-3.1.0/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? './reveal.js-3.1.0/css/print/pdf.css' : './reveal.js-3.1.0/css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="./resources/custom.css">
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h1 class="force-natural-case">Towards GeoExt 3</h1>
+				<h3 class="force-natural-case">Supporting both OpenLayers 3 and ExtJS 6</h3>
+				<hr />
+				<img src="./resources/img/gx-logo-plain.png" class="plain" width=200/>
+				<p class="small">Marc Jansen &amp; Christian Mayer</p>
+				<p class="small">FOSS4G 2015, Seoul, South Korea, 2015-09-18</p>
+			</section>
+
+			<section>
+				<h2>Outline</h2>
+				<ul>
+					<li>Intro &amp; Meta</li>
+					<li>A short history of GeoExt</li>
+					<li>GeoExt 3
+						<ul>
+							<li>Objectives</li>
+							<li>State</li>
+							<li>Examples</li>
+							<li>Major changes</li>
+						</ul>
+					</li>
+					<li>Outlook</li>
+				</ul>
+			</section>
+
+			<section id="author-marc-jansen" class="author">
+				<h2>Marc Jansen</h2>
+				<img src="./resources/img/mj.jpg">
+				<img src="./resources/img/openlayers_de_1ed.png" class="plain" style="width: 15%">
+				<ul>
+					<li>Since 2007 developer &amp, project leader @ terrestris</li>
+					<li>Coredeveloper &amp; member of PSC GeoExt</li>
+					<li>Coredeveloper  OpenLayers</li>
+					<li>Author of a the German "OpenLayers" book</li>
+					<li>OSGeo Foundation Charter Member</li>
+					<li>♥ OpenSource &amp; GIS / Spatial</li>
+				</ul>
+			</section>
+
+			<section id="about-company-terrestris">
+				<div class="print-wrap" style="height: 500px;">
+					<h2 class="force-natural-case">terrestris</h2>
+					<div class="split-info">
+						<div class="part">
+							<img src="./resources/img/terrestris-logo.png" class="plain contrast" width="192"/>
+							<br /><br />
+							<a class="github" href="https://github.com/terrestris/">@terrestris</a><br />
+							<a class="twitter" href="https://twitter.com/terrestrisde/">@terrestrisde</a>
+						</div>
+						<div class="part">
+							<div class="enumeration">
+								<ul>
+									<li><a href="http://www.terrestris.de/">terrestris.de</a></li>
+                                    <li>OpenSource GIS from Bonn, Germany</li>
+                                    <li>Development, Projects &amp; Support/Teaching</li>
+                                    <li>Consulting, Planning, Implementation &amp; Maintenance</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="author-christian-mayer" class="author">
+				<h2>Christian Mayer</h2>
+				<img src="./resources/img/cm.jpg">
+				<ul>
+					<li>Softwareentwickler &amp; -architekt</li>
+					<li>Vornehmlich im GIS-Bereich</li>
+					<li>Open Source Enthusiast
+						<ul>
+							<li>Kernentwickler GeoExt</li>
+							<li>OpenLayers, GeoTools, uvm.</li>
+						</ul>
+					</li>
+					<li>Sprecher bei nat. und internat. Konferenzen (FOSS4G, FOSSGIS, SVG Open)</li>
+					<li>OSGeo Foundation Charter Member</li>
+				</ul>
+			<!--
+				<div style="width: 30%">
+					<img class="plain contrast" alt="meggsimum.de Logo" src="./resources/img/logo-meggsimumde.jpg" style="clear: right;float: left; width: 100%">
+				</div>
+			-->
+			</section>
+
+			<section id="about-company-meggsimum">
+				<div class="print-wrap" style="height: 500px;">
+					<h2>meggsimum</h2>
+					<div class="split-info">
+						<div class="part">
+							<img src="./resources/img/meggsimum-logo.png" class="plain contrast" width="192"/>
+							<br /><br />
+							<a class="github" href="https://github.com/chrismayer/">@chrismayer</a><br />
+							<a class="twitter" href="https://twitter.com/meggsimum/">@meggsimum</a>
+						</div>
+						<div class="part">
+							<div class="enumeration">
+								<ul>
+									<li><a href="http://meggsimum.de/">meggsimum.de</a></li>
+									<li>TODO CM</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+<!-- https://twitter.com/bitovi/status/631050069903601664 HOT tweet! -->
+
+			<section id="thanks-questions">
+				<h4>Thanks!</h4>
+				<hr />
+				<h1 style="font-size:3.0em">Questions &amp; Remarks?</h1>
+				<hr />
+				<p class="subtle">
+					<a href="#/imprint">Imprint</a>
+				</p>
+			</section>
+
+			<section id="imprint">
+				<h2>Imprint</h2>
+				<h4>Authors</h4>
+				<div style="width: 45%; float: left;">
+					<address style="text-align: left">
+						<strong>Marc Jansen</strong><br />
+						<span style="font-size: smaller;">
+							terrestris GmbH &amp; Co. KG<br />
+							P&uuml;tzchens Chaussee 56<br />
+							53227 Bonn<br />
+							Germany<br />
+							<a href="mailto:jansen@terrestris.de">jansen@terrestris.de</a>
+						</span>
+					</address>
+				</div>
+				<div style="width: 45%; float: right;">
+					<address style="text-align: right">
+						<strong>Christian Mayer</strong><br />
+						<span style="font-size: smaller;">
+							meggsimum.de<br />
+							Hauptstraße 165a<br />
+							67125 Dannstadt-Schauernheim<br />
+							Germany<br />
+							<a href="mailto:chris@meggsimum.de">chris@meggsimum.de</a>
+						</span>
+					</address>
+				</div>
+				<h4 style="clear:both;">Licence</h4>
+
+				<div>
+
+
+					<p class="small" id="license">
+						The slides of this talk are licensed under <a
+						href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA
+						<img src="./resources/img/by-sa.png" style="height: 1.2em; margin: 0 0 -0.25em 0.25em" class="plain" />
+						</a>
+					</p>
+
+					<p class="small">
+						<a href="http://marcjansen.github.io/foss4g-2015/Towards-GeoExt-3-Supporting-both-OpenLayers-3-and-ExtJS-6.html">Slides (HTML)</a>,
+						<a href="http://marcjansen.github.io/foss4g-2015/Towards-GeoExt-3-Supporting-both-OpenLayers-3-and-ExtJS-6.pdf">Slides (PDF)</a>,
+						<a href="https://github.com/marcjansen/foss4g-2015">git repository</a>
+					</p>
+				</div>
+			</section>
+
+		</div>
+
+	</div> <!-- eof div.reveal -->
+
+	<script src="./reveal.js-3.1.0/lib/js/head.min.js"></script>
+	<script src="./reveal.js-3.1.0/js/reveal.js"></script>
+
+	<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+
+		transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+		// Optional reveal.js plugins
+		dependencies: [
+			{ src: './reveal.js-3.1.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: './reveal.js-3.1.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: './reveal.js-3.1.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: './reveal.js-3.1.0/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: './reveal.js-3.1.0/plugin/zoom-js/zoom.js', async: true },
+			{ src: './reveal.js-3.1.0/plugin/notes/notes.js', async: true }
+		]
+	});
+
+	</script>
+
+</body>
+</html>
