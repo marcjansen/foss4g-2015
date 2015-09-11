@@ -311,6 +311,7 @@
 				<ul>
 					<li>Start from scratch</li>
 					<li>Benefit from sencha tooling (build / packaging)</li>
+					<li>Benefit OpenLayers feature galore</li>
 					<li>Unbiased about medium (desktop / mobile)</li>
 					<li>Enable access of library objects (e.g. ol3)</li>
 					<li>More examples, improved tests and documentation</li>
@@ -336,6 +337,28 @@
 					<li>Universal app example <span class="nope">✗</span></li>
 					<li>0 releases <span class="nope">✗</span></li>
 				</ul>
+			</section>
+
+			<section>
+				<h2>State</h2>
+				<ul>
+					<li><a href="http://geoext.github.io/geoext3/">Homepage</a></li>
+					<li>latest <a href="http://geoext.github.io/geoext3/master/docs/">API Docs</a></li>
+					<li>latest <a href="http://geoext.github.io/geoext3/master/docs-w-ext/">API Docs with ExtJS</a></li>
+					<li>latest Examples (linked on Homepage)</li>
+					<li>latest Sencha Package</li>
+				</ul>
+				<pre><code data-trim>
+# Once on the commandline
+sencha package repo add \
+    GeoExt http://geoext.github.io/geoext3/cmd/pkgs
+				</code></pre>
+				<pre><code data-trim>
+// in app.json
+"requires": [
+    "GeoExt"
+],
+				</code></pre>
 			</section>
 
 			<section>
@@ -490,7 +513,7 @@ var mapComponent = Ext.create('GeoExt.component.Map', {
 					<li>Attract <span class="highlight">more people</span></li>
 					<li>Universal application</li>
 					<li>Possible restructuring: GeoExt-<span class="highlight">base</span>, -<span class="highlight">modern</span>, -<span class="highlight">classic</span></li>
-					<li>Continuous deployment: <a href="https://github.com/geoext/geoext3/compare/master...marcjansen:auto-update-gh-pages">WIP</a></li>
+					<li>Continuous deployment: first steps done</li>
 					<li>… then release it as <span class="highlight">3.0.0</span></li>
 				</ul>
 			</section>
